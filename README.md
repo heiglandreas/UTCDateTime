@@ -19,6 +19,12 @@ Use the UTCDateTime- or UTCDateTimeImmutable-Object just like PHPs own DateTime-
 
 Calls to ```setTimeZone``` will be ignored, all other calls will be executed just as before. The only difference will be, that no matter what you put into the DateTime-Objects, it will always contain the UTC-representation of your date. And there is no way to change that.
 
+These classes also introduce some more Formating-constants. Have a look at the source for more information
+
 ## Licence
 
 This code is licensed under the MIT-License.
+
+## Contributing
+
+Contributions are always welcome. Fork the repo, do whatever you like and open a pull request!
