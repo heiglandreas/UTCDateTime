@@ -90,7 +90,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
 
     public function testGettingDateTimeFromFormatString()
     {
-        $this->markTest Skipped('Check why createFromFormat calls setTimezone in UTCDateTime');
+        $this->markTestSkipped('Check why createFromFormat calls setTimezone in UTCDateTime');
         $test = DateTime::createFromFormat(DateTime::RFC3339, '2013-12-14 12:34:45+02:00', new \DateTimeZone('UTC'));
 
         $this->assertinstanceof('\UTCDateTime\DateTime', $test);
