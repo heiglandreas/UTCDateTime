@@ -1,0 +1,27 @@
+{
+    "name" : "UTCDateTime/DateTime",
+    "type" : "library",
+    "description": "Provides a datetime-implementation that is always UTC",
+    "keywords": ["DateTime","UTC", "GMT"],
+    "homepage": "http://github.com/heiglandreas/UTCDateTime",
+    "license": "MIT",
+    "authors": [{
+        "name": "Andreas Heigl",
+        "email": "andreas@heigl.org",
+        "homepage": "http://andreas.heigl.org",
+        "role": "Developer"
+    }],
+    "require-dev" : {
+        "mockery/mockery": "0.9.0"
+    },
+    "minimum-stability" : "dev",
+    "prefer-stable" : true,
+    "autoload": {
+        "psr-0": {
+            "UTCDateTime": "src"
+        },
+        "classmap": [
+            "./"
+        ]
+    }
+}
