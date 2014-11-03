@@ -36,6 +36,13 @@ use UTCDateTime\DateTime;
 
 class DateTimeImmutableTest extends \PHPUnit_Framework_TestCase
 {
+    public function setup()
+    {
+        if (version_compare(PHP_VERSION, '5.5', '<')) {
+            $this->markTestSkipped('Skipped due to version mismatch. DateTimeImmutable does not work before PHP 5.5');
+        }
+    }
+
     public function testCreationOfUTCDateTime()
     {
         $test = new DateTimeImmutable('2013-12-14 12:34:45+02:00');
