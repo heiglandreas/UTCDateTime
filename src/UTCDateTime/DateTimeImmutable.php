@@ -31,10 +31,10 @@
 
 namespace UTCDateTime;
 
-use \DateTime as DefaultDateTime;
+use \DateTimeImmutable as DefaultDateTimeImmutable;
 use \DateTimeZone;
 
-class DateTime extends DefaultDateTime
+class DateTimeImmutable extends DefaultDateTimeImmutable
 {
     const RFC7231 = 'D, d M Y H:i:s \G\M\T';
 
@@ -48,9 +48,8 @@ class DateTime extends DefaultDateTime
      */
     public function __construct($time = 'now', DateTimeZone $timezone = null)
     {
-
-        parent::__construct($time, $timezone);
-        parent::setTimezone(new DateTimeZone('UTC'));
+        $utcdate = new DateTime($time, $timezone);
+        parent::__construct($utcdate->format('Y-m-d H:i:s'), new DateTimeZone('UTC'));
     }
 
     /**
@@ -78,7 +77,7 @@ class DateTime extends DefaultDateTime
             $timezone = new DateTimeZone(date_default_timezone_get());
         }
 
-        $dateTimeObject = \DateTime::createFromFormat($format, $time, $timezone);
+        $dateTimeObject = \DateTimeImmutable::createFromFormat($format, $time, $timezone);
         $dateTimeObject->setTimezone(new DateTimeZone('UTC'));
 
         return new self($dateTimeObject->format(\DateTime::RFC2822));
