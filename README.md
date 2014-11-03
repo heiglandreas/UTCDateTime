@@ -3,6 +3,7 @@
 A small library that always uses UTC for your DateTime-Objects no matter what you input.
 
 [![Build Status](https://travis-ci.org/heiglandreas/UTCDateTime.svg?branch=master)](https://travis-ci.org/heiglandreas/UTCDateTime)
+[![Code Climate](https://codeclimate.com/github/heiglandreas/UTCDateTime/badges/gpa.svg)](https://codeclimate.com/github/heiglandreas/UTCDateTime)
 
 ## Installation
 

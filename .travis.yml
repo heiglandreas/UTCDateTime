@@ -16,3 +16,10 @@ script:
 matrix:
  allow_failures:
   - php: 5.3.3
+
+addons:
+ code_climate:
+  repo_token: 378324e6f58cac254441ca887e602c782456c7304d0e6c957487cae2e380a8da
+
+after_script:
+ - ./vendor/bin/test-reporter
