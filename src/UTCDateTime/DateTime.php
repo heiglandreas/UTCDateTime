@@ -66,11 +66,13 @@ class DateTime extends DefaultDateTime
 
     /**
      * Parse a string into a new DateTime object according to the specified format
+     *
      * @param string $format Format accepted by date().
      * @param string $time String representing the time.
      * @param DateTimeZone $timezone A DateTimeZone object representing the desired time zone.
-     * @return DateTime
+     *
      * @link http://php.net/manual/en/datetime.createfromformat.php
+     * @return DateTime
      */
     public static function createFromFormat($format, $time, $timezone = null)
     {
@@ -82,5 +84,15 @@ class DateTime extends DefaultDateTime
         $dateTimeObject->setTimezone(new DateTimeZone('UTC'));
 
         return new self($dateTimeObject->format(\DateTime::RFC2822));
+    }
+
+    /**
+     * Get a PHP-DateTime-Object from this class for further handling
+     *
+     * @return \DateTime
+     */
+    public function getDateTime()
+    {
+        return new \DateTime($this->format('Y-m-d H:i:s'), new DateTimeZone('UTC'));
     }
 }

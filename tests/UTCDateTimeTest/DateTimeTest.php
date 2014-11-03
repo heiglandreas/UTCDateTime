@@ -106,5 +106,16 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    public function testGettingPHPDateTImeObject()
+    {
+        $test = new DateTime('2013-12-14 12:34:45+02:00');
+
+        $dto = $test->getDateTime();
+
+        $this->assertInstanceOf('\DateTime', $dto);
+        $this->assertEquals('2013-12-14T10:34:45+00:00', $dto->format(DateTime::RFC3339));
+        $this->assertEquals('UTC', $dto->getTimezone()->getName());
+    }
+
 
 }
