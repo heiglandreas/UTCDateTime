@@ -19,7 +19,8 @@ matrix:
 
 addons:
  code_climate:
-  repo_token: 378324e6f58cac254441ca887e602c782456c7304d0e6c957487cae2e380a8da
+  repo_token:
+   secure: "I3eTx9kL0G59wHo3pppEBlAt0eq3DkxgoTcF/6teFrNgQ2/Fn6Cx1Joh2FIIk9MTE1lERrM6nwNK6M58iYhLMJNE6svnDLnBIgt9eEQb0NCzyeDtMUQwiTDEVt/GA6RZvHoqEHbcp88H2AOHcMqGOEJZsOlDWbxMjmBKNBvAdWU="
 
 after_script:
  - ./vendor/bin/test-reporter
