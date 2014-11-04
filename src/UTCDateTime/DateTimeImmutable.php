@@ -55,10 +55,14 @@ class DateTimeImmutable extends DefaultDateTimeImmutable
     /**
      * @param DateTimeZone $timezone
      *
+     * @throws \LogicException
      * @return self
      */
     public function setTimezone($timezone)
     {
+        if (DateTime::$throwOnSetTimezone) {
+            throw new \LogicException('Setting a timezone on a UTCDateTime-object doesn\'t make sense');
+        }
         trigger_Error('Setting a timezone on a UTCDateTime-object doesn\'t make sense');
         return $this;
     }

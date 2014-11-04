@@ -41,6 +41,7 @@ class DateTimeImmutableTest extends \PHPUnit_Framework_TestCase
         if (version_compare(PHP_VERSION, '5.5', '<')) {
             $this->markTestSkipped('Skipped due to version mismatch. DateTimeImmutable does not work before PHP 5.5');
         }
+        DateTime::$throwOnSetTimezone = true;
     }
 
     public function testCreationOfUTCDateTime()
@@ -72,8 +73,8 @@ class DateTimeImmutableTest extends \PHPUnit_Framework_TestCase
 
     public function testSettingTimezoneDoesNothing()
     {
+        DateTime::$throwOnSetTimezone = false;
         $test = new DateTimeImmutable();
-
         $this->assertSame($test, @$test->setTimeZone(new \DateTimeZone('Europe/Berlin')));
         $this->assertEquals(new \DateTimeZone('UTC'), $test->getTimezone());
     }
@@ -83,9 +84,20 @@ class DateTimeImmutableTest extends \PHPUnit_Framework_TestCase
      */
     public function testSettingTimezoneTRiggersError()
     {
+        DateTime::$throwOnSetTimezone = false;
         $test = new DateTimeImmutable();
 
         $this->assertSame($test, $test->setTimeZone(new \DateTimeZone('Europe/Berlin')));
+    }
+
+    /**
+     * @expectedException \LogicException
+     */
+    public function testSettingTimezoneThrowsException()
+    {
+        $test = new DateTimeImmutable();
+
+        $test->setTimeZone(new \DateTimeZone('Europe/Berlin'));
     }
 
     public function testGettingDateTimeFromFormatString()
