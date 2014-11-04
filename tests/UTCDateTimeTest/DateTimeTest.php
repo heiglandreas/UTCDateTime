@@ -37,7 +37,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
 {
     public function setup()
     {
-        DateTime::$throwOnSetTimezone = true;
+        DateTime::$legacyMode = false;
     }
 
     public function testCreationOfUTCDateTime()
@@ -77,12 +77,11 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
 
     public function testSettingTimezoneDoesNothing()
     {
-        DateTime::$throwOnSetTimezone = false;
+        DateTime::$legacyMode = true;
         $test = new DateTime();
 
         $this->assertSame($test, @$test->setTimeZone(new \DateTimeZone('Europe/Berlin')));
         $this->assertEquals(new \DateTimeZone('UTC'), $test->getTimezone());
-        DateTime::$throwOnSetTimezone = false;
     }
 
     /**
@@ -90,7 +89,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
      */
     public function testSettingTimezoneTriggersError()
     {
-        DateTime::$throwOnSetTimezone = false;
+        DateTime::$legacyMode = true;
         $test = new DateTime();
 
         $this->assertSame($test, $test->setTimeZone(new \DateTimeZone('Europe/Berlin')));

@@ -60,7 +60,7 @@ class DateTimeImmutable extends DefaultDateTimeImmutable
      */
     public function setTimezone($timezone)
     {
-        if (DateTime::$throwOnSetTimezone) {
+        if (! DateTime::$legacyMode) {
             throw new \LogicException('Setting a timezone on a UTCDateTime-object doesn\'t make sense');
         }
         trigger_Error('Setting a timezone on a UTCDateTime-object doesn\'t make sense');

@@ -40,7 +40,7 @@ class DateTime extends DefaultDateTime
 
     const PDF = 'YmdHis\Z';
 
-    public static $throwOnSetTimezone = true;
+    public static $legacyMode = false;
 
     /**
      * @param string       $time
@@ -63,7 +63,7 @@ class DateTime extends DefaultDateTime
      */
     public function setTimezone($timezone)
     {
-        if (self::$throwOnSetTimezone) {
+        if (! self::$legacyMode) {
             throw new \LogicException('Setting a timezone on a UTCDateTime-object doesn\'t make sense');
         }
         trigger_Error('Setting a timezone on a UTCDateTime-object doesn\'t make sense');
