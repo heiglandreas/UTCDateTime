@@ -4,7 +4,7 @@ A small library that always uses UTC for your DateTime-Objects no matter what yo
 
 [![Build Status](https://travis-ci.org/heiglandreas/UTCDateTime.svg?branch=master)](https://travis-ci.org/heiglandreas/UTCDateTime)
 [![Code Climate](https://codeclimate.com/github/heiglandreas/UTCDateTime/badges/gpa.svg)](https://codeclimate.com/github/heiglandreas/UTCDateTime)
-
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/heiglandreas/UTCDateTime/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/heiglandreas/UTCDateTime/?branch=master)
 ## Installation
 
 UTCDateTime is installed via composer. Call ```composer require utcdatetime/utcdatetime``` from the commandline in your project.

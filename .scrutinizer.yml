@@ -1,11 +1,18 @@
-checks:
-    php:
-        code_rating: true
-        duplication: true
 filter:
+    paths:
+        - src/*
     excluded_paths:
         - tests/*
+        - vendor/*
 tools:
-    external_code_coverage:
-        timeout: 300
-        runs: 1
+    external_code_coverage: true
+    php_mess_detector: true
+    php_code_sniffer: true
+    sensiolabs_security_checker: true
+    php_pdepend: true
+    php_loc:
+        enabled: true
+        excluded_dirs: [vendor, tests]
+    php_cpd:
+        enabled: true
+        excluded_dirs: [vendor, tests]
