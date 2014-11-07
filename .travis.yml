@@ -23,4 +23,7 @@ addons:
    secure: "I3eTx9kL0G59wHo3pppEBlAt0eq3DkxgoTcF/6teFrNgQ2/Fn6Cx1Joh2FIIk9MTE1lERrM6nwNK6M58iYhLMJNE6svnDLnBIgt9eEQb0NCzyeDtMUQwiTDEVt/GA6RZvHoqEHbcp88H2AOHcMqGOEJZsOlDWbxMjmBKNBvAdWU="
 
 after_script:
- - ./vendor/bin/test-reporter
+ - ./vendor/bin/test-reporter --stdout > codeclimate.json
+ - 'curl -X POST -d @codeclimate.json -H "Content-Type: application/json" -H "User-Agent: Code Climate (PHP Test Reporter v1.0.1-dev)"  https://codeclimate.com/test_reports'
+ - wget https://scrutinizer-ci.com/ocular.phar
+ - php ocular.phar code-coverage:upload --format=php-clover build/logs/clover.xml
