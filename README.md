@@ -18,11 +18,19 @@ Alternatively you can include the following line in your ```composer.json``` ins
 
 Use the UTCDateTime- or UTCDateTimeImmutable-Object just like PHPs own DateTime-Objects. You do not have to rewrite any productive code. Just add ```use UTCDateTime/DateTime``` resp. ```use UTCDateTime\DateTimeimmutable``` to the ```use```-section of your PHP-file. That will cause PHP to use the UTCDateTime-Objects instead of the PHP-Internal DateTime-Objects.
 
-Calls to ```setTimeZone``` will be ignored, all other calls will be executed just as before. The only difference will be, that no matter what you put into the DateTime-Objects, it will always contain the UTC-representation of your date. And there is no way to change that.
+Calls to ```setTimeZone``` will throw a LogicException, all other calls will be executed just as before. The only difference will be, that no matter what you put into the DateTime-Objects, it will always contain the UTC-representation of your date. And there is no way to change that.
 
 So any Datetime-data will always be correctly converted to UTC and you can then work with that like so:
 
     use UTCDateTime\DateTime;
+    $date = new DateTime('2014-11-03 12:34:56', new DateTimeZone('Europe/Berlin'));
+    echo $date->format(DateTime::RFC3339);
+    // 2014-11-03T10:34:56+00:00
+
+In legacy mode calls to ```setTimeZone``` will trigger an ```E_USER_NOTICE``` instead of throwing an Exception. That way you can use it in existing code to transparently replace existing DateTime-Objects. To turn on legacy mode you have to set ```DateTime::$legacyMode = true``` before the first call to ```set TimeZone```.
+
+    use UTCDateTime\DateTime;
+    DateTime::$legacyMode = true;
     $date = new DateTime('2014-11-03 12:34:56', new DateTimeZone('Europe/Berlin'));
     echo $date->format(DateTime::RFC3339);
     // 2014-11-03T10:34:56+00:00

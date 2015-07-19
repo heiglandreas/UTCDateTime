@@ -35,6 +35,11 @@ use UTCDateTime\DateTime;
 
 class DateTimeTest extends \PHPUnit_Framework_TestCase
 {
+    public function setup()
+    {
+        DateTime::$legacyMode = false;
+    }
+
     public function testCreationOfUTCDateTime()
     {
         $test = new DateTime('2013-12-14 12:34:45+02:00');
@@ -72,6 +77,7 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
 
     public function testSettingTimezoneDoesNothing()
     {
+        DateTime::$legacyMode = true;
         $test = new DateTime();
 
         $this->assertSame($test, @$test->setTimeZone(new \DateTimeZone('Europe/Berlin')));
@@ -81,11 +87,22 @@ class DateTimeTest extends \PHPUnit_Framework_TestCase
     /**
      * @expectedException PHPUnit_Framework_Error_Notice
      */
-    public function testSettingTimezoneTRiggersError()
+    public function testSettingTimezoneTriggersError()
     {
+        DateTime::$legacyMode = true;
         $test = new DateTime();
 
         $this->assertSame($test, $test->setTimeZone(new \DateTimeZone('Europe/Berlin')));
+    }
+
+    /**
+     * @expectedException \LogicException
+     */
+    public function testSettingTimezoneThrowsException()
+    {
+        $test = new DateTime();
+
+        $test->setTimeZone(new \DateTimeZone('Europe/Berlin'));
     }
 
     public function testGettingDateTimeFromFormatString()
