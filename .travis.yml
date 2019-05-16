@@ -17,6 +17,8 @@ script:
 matrix:
  allow_failures:
   - php: nightly
+  - php: "7.0"
+  - php: "7.1"
 
 addons:
  code_climate:
