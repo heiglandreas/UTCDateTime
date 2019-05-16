@@ -49,4 +49,14 @@ trait DateTimeBase
 
         return new self($dateTimeObject->format(\DateTime::RFC2822));
     }
+
+    /**
+     * Get a PHP-DateTime-Object from this class for further handling
+     *
+     * @return self
+     */
+    public function getDateTime()
+    {
+        return new static($this->format('Y-m-d H:i:s'), new DateTimeZone('UTC'));
+    }
 }

@@ -32,14 +32,4 @@ class DateTimeImmutable extends DefaultDateTimeImmutable
         $utcdate = new DateTime($time, $timezone);
         parent::__construct($utcdate->format('Y-m-d H:i:s'), new DateTimeZone('UTC'));
     }
-
-    /**
-     * Get a PHP-DateTime-Object from this class for further handling
-     *
-     * @return self
-     */
-    public function getDateTime()
-    {
-        return new static($this->format('Y-m-d H:i:s'), new DateTimeZone('UTC'));
-    }
 }
