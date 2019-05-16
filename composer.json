@@ -8,15 +8,15 @@
     "authors": [{
         "name": "Andreas Heigl",
         "email": "andreas@heigl.org",
-        "homepage": "http://andreas.heigl.org",
+        "homepage": "https://andreas.heigl.org",
         "role": "Developer"
     }],
     "require" : {
-        "php" : ">=7.0"
+        "php" : "^7.0"
     },
     "require-dev" : {
-        "mockery/mockery": "0.9.0",
-        "phpunit/phpunit" : "^6.5",
+        "mockery/mockery": "^1.2.0",
+        "phpunit/phpunit" : "^8.1",
         "codeclimate/php-test-reporter": "dev-master"
     },
     "minimum-stability" : "dev",

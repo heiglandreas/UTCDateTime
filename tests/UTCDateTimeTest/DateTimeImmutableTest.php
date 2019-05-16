@@ -38,7 +38,7 @@ use UTCDateTime\DateTime;
 
 class DateTimeImmutableTest extends TestCase
 {
-    public function setup()
+    public function setup() : void
     {
         if (version_compare(PHP_VERSION, '5.5', '<')) {
             $this->markTestSkipped('Skipped due to version mismatch. DateTimeImmutable does not work before PHP 5.5');
