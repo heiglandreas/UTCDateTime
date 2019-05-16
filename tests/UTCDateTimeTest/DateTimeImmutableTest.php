@@ -1,7 +1,7 @@
 <?php
 /**
  * Copyright (c)2014-2014 heiglandreas
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
@@ -11,7 +11,7 @@
  *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -20,7 +20,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  *
- * @category 
+ * @category
  * @author    Andreas Heigl<andreas@heigl.org>
  * @copyright ©2014-2014 Andreas Heigl
  * @license   http://www.opesource.org/licenses/mit-license.php MIT-License
@@ -31,12 +31,14 @@
 
 namespace UTCDateTimeTest;
 
+use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Error\Notice;
 use UTCDateTime\DateTimeImmutable;
 use UTCDateTime\DateTime;
 
-class DateTimeImmutableTest extends \PHPUnit_Framework_TestCase
+class DateTimeImmutableTest extends TestCase
 {
-    public function setup()
+    public function setup() : void
     {
         if (version_compare(PHP_VERSION, '5.5', '<')) {
             $this->markTestSkipped('Skipped due to version mismatch. DateTimeImmutable does not work before PHP 5.5');
@@ -78,11 +80,10 @@ class DateTimeImmutableTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(new \DateTimeZone('UTC'), $test->getTimezone());
     }
 
-    /**
-     * @expectedException PHPUnit_Framework_Error_Notice
-     */
     public function testSettingTimezoneTRiggersError()
     {
+        $this->expectException(Notice::class);
+
         $test = new DateTimeImmutable();
 
         $this->assertSame($test, $test->setTimeZone(new \DateTimeZone('Europe/Berlin')));

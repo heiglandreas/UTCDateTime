@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="./tests/bootstrap.php">
-    <testsuite name="UTCDateTime TEst-Suite">
+    <testsuite name="UTCDateTime Test-Suite">
         <directory>./tests/</directory>
     </testsuite>
     <groups>
@@ -19,8 +19,7 @@
         <!-- 
             Adapt these paths to your special needs 
         -->
-        <log type="coverage-html" target="doc/coverage" charset="UTF-8"
-             yui="true" highlight="false"
+        <log type="coverage-html" target="doc/coverage"
              lowUpperBound="35" highLowerBound="70"/>
         <!-- log type="coverage-xml" target="path/to/coverage.xml"/-->
         <!-- log type="graphviz" target="path/to/logfile.dot"/-->

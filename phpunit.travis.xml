@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="./tests/bootstrap.php">
-    <testsuite name="UTCDateTime TEst-Suite">
+    <testsuite name="UTCDateTime Test-Suite">
         <directory>./tests/</directory>
     </testsuite>
     <groups>
